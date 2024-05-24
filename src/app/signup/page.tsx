@@ -1,55 +1,53 @@
 "use client"
-import Link from "next/link"
-import React ,{ useEffect, useState} from "react"
-import { useRouter } from "next/navigation"
-import axios from "axios"
-import toast from "react-hot-toast"
-import styles from "./signup.module.css"
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import toast from "react-hot-toast";
+import styles from "./signup.module.css";
 
 function SignUp() {
   const router = useRouter();
-  const [user,setUser] = useState({
-    username:"",
+  const [user, setUser] = useState({
+    username: "",
     email: "",
     password: ""
   });
-  const [message, setMessage] = useState(null); // State to store response message
-  const [buttonDisabled,setButtonDisabled] = useState(false); 
+  const [message, setMessage] = useState<string | null>(null); // State to store response message
+  const [buttonDisabled, setButtonDisabled] = useState(true); 
 
   useEffect(() => {
-    if (user.email && user.password && user.username) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  },[user])
+    setButtonDisabled(!(user.email && user.password && user.username));
+  }, [user]);
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSignup()
-  }
+    onSignup();
+  };
 
-  const  onSignup =async()=>{
+  const onSignup = async () => {
     try {
       const response = await axios.post("/api/users/signup", user);
-      console.log("signup success",response.data)
-      router.push("/login")
+      console.log("Signup success", response.data);
       setMessage(response.data.message); 
+      toast.success("Signup successful!");
       setUser({
         username: "",
         email: "",
         password: ""
       });
-    } catch (error:any) {
-      console.log("Signup faliled",error.message)
-      toast.error(error.message)
+      router.push("/login");
+    } catch (error: any) {
+      console.log("Signup failed", error.message);
+      setMessage(`Error: ${error.message}`);
+      toast.error(error.message);
     }
-  }
-  
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
