@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       user: user.user, // Assuming this should be 'user' based on your schema
     };
 
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
     // Debugging: Log the generated JWT token
     console.log("Generated Token:", token);
