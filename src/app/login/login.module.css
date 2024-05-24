@@ -1,0 +1,89 @@
+/* frontend/app/login/login.module.css */
+.container {
+    min-height: 100vh;
+    background-color: #000000; /* Black background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center align items */
+    padding: 3rem 1rem;
+  }
+  
+  .formContainer {
+    width: 100%;
+    max-width: 24rem;
+
+    
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #ffffff; /* White text */
+    margin-bottom: 1.5rem; /* Adjust margin */
+  }
+  
+  .form {
+    background-color: #97aedc; /* Dark background for form */
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding-left: 20px;
+  }
+  
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e2e8f0; /* Light gray text */
+    margin-bottom: 0.5rem; /* Add margin for better spacing */
+  }
+  
+  .input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-size: 0.875rem;
+    color: #1a202c; /* Dark text */
+    background-color: #ffffff; /* White input background */
+    margin-bottom: 1rem; /* Add margin for better spacing */
+  }
+  
+  .button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff; /* White text */
+    margin-top: 1rem;
+  }
+  
+  .buttonEnabled {
+    background-color: #0c0f52;
+    cursor: pointer;
+  }
+  
+  .buttonEnabled:hover {
+    background-color: #434190;
+  }
+  
+  .buttonDisabled {
+    background-color: #396fb5;
+    cursor: not-allowed;
+  }
+  
+  .link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+   
+    color: #020202; /* Light blue link */
+  }
